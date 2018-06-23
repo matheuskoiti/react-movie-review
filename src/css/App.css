@@ -2,34 +2,29 @@
   font-size: 2.0em;
   margin-bottom: 20px;
   margin-left: 100px;
+  color: #0078e7;
 }
 
 .right-margin {
-  margin-right: 100px;
+  margin-right: 144px;
 }
 
-section {
-  width: 100%;
+.form {
+  margin-left: 250px;
+  margin-top: 30px;
 }
 
-article {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  padding: 1rem;
-  text-align: left;
-  transform: translate(-50%, -50%);
+.list {
+  margin-left: 45px;
+  margin-top: 40px;
 }
 
-.left-half {
-  float: left;
-  width: 50%;
-  margin-top: 300px;
+.result {
+  font-size: 1.0em;
+  margin-top: 40px;
+  margin-bottom: 20px;
   margin-left: 100px;
+  color: #0078e7;
 }
 
-.right-half {
-  margin-top: -500px;
-  float: right;
-  width: 50%;
-}
+

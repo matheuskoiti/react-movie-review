@@ -8,7 +8,7 @@ class Form extends Component {
 	constructor() {
 		super();
 
-    	this.state = {movies : [], result: ""};
+    	this.state = {movie: "", movies : [], result: []};
     	this.sendForm = this.sendForm.bind(this);
 	}
 
@@ -18,24 +18,26 @@ class Form extends Component {
 			datatype: 'json',
 			success: function(response){
 				this.setState({movies:response});
-				alert("aaaaaaaaaaaaa");
-			}.bind(this)
+			}.bind(this),
 		});
 	}
 
 	sendForm(event) {
-		// const data = new FormData(event.target);
-		// const snacks = data.getAll('snack');
+		const data = new FormData(event.target);
+		const score = data.getAll('score');
+		const description = data.getAll('description');
+		const movie = data.getAll('movie');
 
 		event.preventDefault();
-		// $.ajax({
-		// 	url: "http://localhost:8181/snack/order/value?snacks=" + snacks + "&quantities=" + quantities,
-		// 	datatype: 'json',
-		// 	success: function(response) {
-		// 		this.setState({result:response});
-		// 		this.handleOpenModal();
-		// 	}.bind(this)
-		// });
+
+		$.ajax({
+			url: "http://localhost:8080/review/add?score=" + score + "&description=" + description + "&movieId=" + movie,
+		 	datatype: 'json',
+		 	success: function(response) {
+		 		this.setState({result:response});
+		 		this.setState({movie:response.movie.name});
+		 	}.bind(this)
+		});
 	}
 
 	render() {
@@ -48,7 +50,7 @@ class Form extends Component {
 			    <fieldset>
 			        <div className="pure-control-group">
 			        	<label htmlFor="name">Filme</label>
-			            <select name="name" id="name" type="text">
+			            <select name="movie" id="movie" type="text">
 			            {
 		                	this.state.movies.map(function(movie){
 			                  	return (
@@ -61,21 +63,42 @@ class Form extends Component {
 			        </div>
 			        <div className="pure-control-group">
 			            <label htmlFor="score">Nota</label>
-			            <input id="score"/>
+			            <input type="number" min="1" max="10" step="0.1" id="score" name="score"/>
 			        </div>
 			        <div className="pure-control-group">
-			            <label htmlFor="description">Descrição</label>
+			            <label htmlFor="description">Cometário</label>
 			            <textarea id="description" name="description" rows="10" cols="30"/>
 			        </div>
-			        <div className="pure-controls">
+			        <div className="pure-controls right-margin">
 			            <button type="submit" className="pure-button pure-button-primary right-margin">Adicionar</button>
 			        </div>
 			    </fieldset>
 			</form>
+	      	<div className="result">
+				Seus comentários:
+			</div>
+			<table className="pure-table pure-table-horizontal">
+			    <thead>
+			        <tr>
+			            <th>Nome do filme</th>
+			            <th>Nota</th>
+			            <th>Comentário</th>
+			        </tr>
+			    </thead>
+
+			    <tbody>
+	    			{
+				        <tr>
+				            <td>{this.state.movie}</td>
+				            <td>{this.state.result.score}</td>
+				            <td>{this.state.result.description}</td>
+				        </tr>	                    	
+	                }
+			    </tbody>
+			</table>
 		</div>
 	  );
 	}
-	
 }
 
 export default Form;

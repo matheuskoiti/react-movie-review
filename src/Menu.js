@@ -11,7 +11,8 @@ class Menu extends Component {
 	            <a className="pure-menu-heading" href="#">MENU</a>
 
 	            <ul className="pure-menu-list">
-	            	<li className="pure-menu-item"><a href="/" className="pure-menu-link">Home</a></li>
+	            	<li className="pure-menu-item"><a href="/form" className="pure-menu-link">Avaliar</a></li>
+	            	<li className="pure-menu-item"><a href="/history" className="pure-menu-link">Histórico</a></li>
 	            </ul>
 	        </div>
 		</div>

@@ -29,7 +29,6 @@ class Form extends Component {
 		const movie = data.getAll('movie');
 
 		event.preventDefault();
-
 		$.ajax({
 			url: "http://localhost:8080/review/add?score=" + score + "&description=" + description + "&movieId=" + movie,
 		 	datatype: 'json',
@@ -43,7 +42,7 @@ class Form extends Component {
 	render() {
 	  return (
 		<div id="App-form">
-	      	<div className="App-title">
+	      	<div className="App-title-form">
 	      		Adicionar avaliação
 	      	</div>
 			<form className="pure-form pure-form-aligned" onSubmit={this.sendForm}>
@@ -74,28 +73,32 @@ class Form extends Component {
 			        </div>
 			    </fieldset>
 			</form>
-	      	<div className="result">
-				Seus comentários:
-			</div>
-			<table className="pure-table pure-table-horizontal">
-			    <thead>
-			        <tr>
-			            <th>Nome do filme</th>
-			            <th>Nota</th>
-			            <th>Comentário</th>
-			        </tr>
-			    </thead>
 
-			    <tbody>
-	    			{
+			<div className="result-container">
+		      	<div className="result">
+					Confira sua avaliação recém adicionada:
+				</div>
+				<table className="pure-table pure-table-horizontal">
+				    <thead>
 				        <tr>
-				            <td>{this.state.movie}</td>
-				            <td>{this.state.result.score}</td>
-				            <td>{this.state.result.description}</td>
-				        </tr>	                    	
-	                }
-			    </tbody>
-			</table>
+				            <th>Nome do filme</th>
+				            <th>Nota</th>
+				            <th>Comentário</th>
+				        </tr>
+				    </thead>
+
+				    <tbody>
+		    			{
+					        <tr>
+					            <td>{this.state.movie}</td>
+					            <td>{this.state.result.score}</td>
+					            <td>{this.state.result.description}</td>
+					        </tr>	                    	
+		                }
+				    </tbody>
+				</table>
+			</div>
+
 		</div>
 	  );
 	}

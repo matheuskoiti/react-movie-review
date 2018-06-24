@@ -26,9 +26,10 @@ class List extends Component {
 		  	<div className="App-title">
 		    	Histórico de avaliações
 		    </div>
-			<table className="pure-table pure-table-horizontal list">
+			<table className="list pure-table pure-table-horizontal">
 			    <thead>
 			        <tr>
+			            <th>Imagem do filme</th>
 			            <th>Nome do filme</th>
 			            <th>Nota</th>
 			            <th>Comentário</th>
@@ -40,6 +41,9 @@ class List extends Component {
 	                	this.state.reviews.map(function(review){
 		                  	return (
 						        <tr>
+									<td>
+										<img src={review.movie.imageUrl}  border="0"/>
+									</td> 
 						            <td>{review.movie.name}</td>
 						            <td>{review.score}</td>
 						            <td>{review.description}</td>

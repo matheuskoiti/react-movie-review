@@ -1,7 +1,14 @@
 .App-title {
   font-size: 2.0em;
   margin-bottom: 20px;
-  margin-left: 100px;
+  margin-left: 40px;
+  color: #0078e7;
+}
+
+.App-title-form {
+  font-size: 2.0em;
+  margin-bottom: 20px;
+  margin-left: 75px;
   color: #0078e7;
 }
 
@@ -17,14 +24,21 @@
 .list {
   margin-left: 45px;
   margin-top: 40px;
+  width: 80%;
 }
 
 .result {
   font-size: 1.0em;
   margin-top: 40px;
   margin-bottom: 20px;
-  margin-left: 100px;
   color: #0078e7;
 }
 
+.result-container {
+  margin-left: 75px;
+}
 
+.image {
+  width:100px;
+  height:100px;
+}
